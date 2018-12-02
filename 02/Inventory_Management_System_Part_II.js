@@ -271,5 +271,4 @@ oewmbpgxjqnzhgkdylfapfiusr
 ohwmwtcxjqnzhgkdylftpviusr
 zebmbtuxjqnzhgkdylfapviusr`;
 const inputArr = inputStr.split('\n');
-const deneme = ['abcde', 'fghij', 'klmno', 'pqrst', 'fguij', 'axcye', 'wvxyz'];
-console.log(correctBox(inputArr)); // 6916;
+correctBox(inputArr); // oeylbtcxjqnzhgyylfapviusr;
