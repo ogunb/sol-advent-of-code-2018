@@ -1,3 +1,44 @@
+function checksumMemo() {
+  let totalTwoCounter = 0;
+  let totalThreeCounter = 0;
+  return (boxes = []) => {
+    for (const boxId of boxes) {
+      const boxMemo = {};
+      let twoCounter = 0;
+      let threeCounter = 0;
+
+      const breakPoint = boxId.split('').length;
+      for (let i = 0; i < breakPoint; i++) {
+        const letter = boxId[i];
+        if (boxMemo[letter]) {
+          boxMemo[letter]++;
+        } else {
+          boxMemo[letter] = 1;
+        }
+      }
+
+      for (const letter in boxMemo) {
+        if (Object.prototype.hasOwnProperty.call(boxMemo, letter)) {
+          if (twoCounter > 0 && threeCounter > 0) break;
+          if (boxMemo[letter] === 2) {
+            twoCounter++;
+          } else if (boxMemo[letter] === 3) {
+            threeCounter++;
+          }
+        }
+      }
+
+      if (twoCounter > 0) {
+        totalTwoCounter++;
+      }
+      if (threeCounter > 0) {
+        totalThreeCounter++;
+      }
+    }
+    return totalTwoCounter * totalThreeCounter;
+  };
+}
+
 const inputStr = `oeambtcgjqnzhgkdylfapoiusr
 oewmbtcxjqnzhgvdyltapvqusr
 oewmbtchjqnzigkdylfapviuse
@@ -248,5 +289,6 @@ oewmbtcxeqczhgudylfapviusr
 oewmbpgxjqnzhgkdylfapfiusr
 ohwmwtcxjqnzhgkdylftpviusr
 zebmbtuxjqnzhgkdylfapviusr`;
-
 const inputArr = inputStr.split('\n');
+const checksum = checksumMemo();
+checksum(inputArr); // 6916;
